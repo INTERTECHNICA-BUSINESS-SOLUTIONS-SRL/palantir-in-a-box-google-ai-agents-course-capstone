@@ -4,7 +4,8 @@ from markdownify import markdownify
 def retrieve_metadata_and_content_from_url(url: str) -> Tuple[Dict[str, Any], str]:
     """
     Fetches a webpage and returns its metadata together with the main content converted to Markdown.
-
+    This can be used as a tool.
+    
     Args:
         url (str): The URL to retrieve.
 
@@ -27,6 +28,7 @@ def retrieve_metadata_and_content_from_url(url: str) -> Tuple[Dict[str, Any], st
 def retrieve_content_from_url(url: str) -> str:
     """
     Retrieves the content from a URL as clean Markdown.
+    This can be used as a tool.
 
     Args:
         url (str): The URL to retrieve content from.
@@ -42,7 +44,8 @@ def retrieve_content_from_url(url: str) -> str:
 def retrieve_curated_metadata_and_content_from_url(url: str) -> Tuple[Dict[str, Any], str]:
     """
     Retrieves metadata and cleaned content from a curated source.
-
+    This can be used as a tool.
+    
     Args:
         url (str): The URL of the curated page.
 
@@ -64,7 +67,8 @@ def retrieve_curated_metadata_and_content_from_url(url: str) -> Tuple[Dict[str, 
 def retrieve_curated_content_from_url(url: str) -> str:
     """
     Retrieves cleaned content from a curated source (metadata is discarded).
-
+    This can be used as a tool.
+    
     Args:
         url (str): The URL to retrieve curated content from.
 
@@ -82,12 +86,15 @@ def retrieve_curated_document_content_from_url(url: str) -> str:
     The output includes title, source URL, keywords, and a blockquote-formatted summary,
     followed by a separator and the full cleaned content — ideal for archiving or feeding to LLMs.
 
+    This can be used as a tool.
+    
     Args:
         url (str): The URL of the curated document.
 
     Returns:
         str: Complete Markdown document with header information and content.
     """
+    
     # fetch both metadata and cleaned content from the curated source
     metadata, content = retrieve_curated_metadata_and_content_from_url(url)
     
