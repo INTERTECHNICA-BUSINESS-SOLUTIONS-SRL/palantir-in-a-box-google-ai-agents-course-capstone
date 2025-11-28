@@ -33,7 +33,9 @@ class AnalysisActionableInformationAgentFactory(BaseGeminiLLMAgentFactory):
             Create the list of actionable actions using EXACTLY the format requested by the user.
             DO NOT CHANGE THE FORMAT at all.
             
-            If the user did not provide any formatting instructions, use generic markdown format. 
+            If the user did not provide any formatting instructions, use generic markdown format.
+            
+            Do not add any acknowledgements or introductions. 
         </format>
         """
 
