@@ -95,3 +95,79 @@ def generate_evidence_in_depth_analysis_prompt(hypotheses_data: str, evidence_da
         """
 
     return prompt_template
+
+def generate_evidence_analysis_executive_review_prompt(hypotheses_data: str, detailed_evidence_analysis_data: str) -> str:
+    prompt_template = f"""    
+        <role>
+            You are a professional information analyst having an objective perspective and strong analytical language.
+            You are proficient in creating executive reviews regarding competing hypotheses analysis.
+        </role>
+        <task> 
+            You will receive the hypotheses data in the hypotheses_data section.
+            You will receive the detailed evidence analysis data in the detailed_evidence_analysis_data section.
+            Generate the executive review.
+        </task>
+        <hypotheses_data>
+        
+            {hypotheses_data}
+        
+        </hypotheses_data>
+        <detailed_evidence_analysis_data>
+        
+            {detailed_evidence_analysis_data}
+        
+        </detailed_evidence_analysis_data>
+        """
+
+    return prompt_template
+
+def generate_actionable_information_prompt(
+        user_request_data: str,
+        hypotheses_data: str, 
+        evidence_analysis_data: str,
+        executive_review_data: str
+    ) -> str:
+    
+    prompt_template = f"""    
+        <task>
+            You will be provided with: 
+            
+            * A user request in the user_request_data section
+            * A set of hypotheses in the hypotheses_data section
+            * An analysis of evidence related to hypotheses in the evidence_analysis_data section
+            * An executive review in the executive_review_data section 
+        
+            Create a list of actionable information items as by identifying a list of actionable actions which are focused on satisfying the user request and are aligned with hypotheses, evidence analysis and executive review. 
+            For each actionable information item, create the following structure:
+            
+            - Action: the action suggested by the actionable information item. Make it specific, practical, achievable and time bound. 
+            - Urgency: an explanation of the urgency for the Action. Use a compelling narrative to force the user into taking action.
+            - Analysis: explain what the Action is relevant in the context of user request, hypotheses, evidence analysis and executive review. Use markdown bold to highlight critical information. Make the analysis detailed.
+            - Expected outcome: the outcome which is expected from executing the Action. Explain why the outcome is favorable to the user.
+            - Associated evidence: list all associated evidence from the actionable information. Use a bullet point list for this.            
+            
+            Use the following titles for the structure of actionable information items: "Suggested Action", "Urgency", "Analyst's Comments" and "Expected Outcome".
+
+        </task>
+        <format>
+            Create level 3 headings for each actionable information item. Use an appropriate title for the actionable information item. Add an index value to each actionable information item, start numbering from 1.
+            Use header level 4 for the structure titles.
+            Do not use bullet points unless asked explicitly.
+            Do not use lists unless asked explicitly.
+            Use markdown format.
+        </format>
+        <user_request_data>
+            {user_request_data}
+        </user_request_data>
+        <hypotheses_data>
+            {hypotheses_data}
+        </hypotheses_data>
+        <evidence_analysis_data>
+            {evidence_analysis_data}
+        </evidence_analysis_data>
+        <executive_review_data>
+            {executive_review_data}
+        </executive_review_data>
+        """
+
+    return prompt_template
