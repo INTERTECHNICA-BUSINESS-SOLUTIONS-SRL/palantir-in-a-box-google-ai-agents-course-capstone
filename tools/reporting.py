@@ -6,6 +6,7 @@ TEMPLATES_PATH = "./0_0_3_templates"
 ACH_REPORT_TEMPLATE = "ach_report_markdown_template.jinja"
 
 def generate_report_content (
+            report_title: str,
             user_request_data: str,
             hypotheses_data: Dict[str, Any], 
             executive_review_data: str,
@@ -28,6 +29,7 @@ def generate_report_content (
     
     # render the generated report
     report_content = template.render(
+        report_title = report_title,
         user_request_data = user_request_block_quotes,
         hypotheses_list = hypotheses_list,
         hypotheses_reasoning = hypotheses_reasoning,

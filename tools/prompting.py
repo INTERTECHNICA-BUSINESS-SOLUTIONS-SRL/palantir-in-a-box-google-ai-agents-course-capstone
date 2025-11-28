@@ -171,3 +171,40 @@ def generate_actionable_information_prompt(
         """
 
     return prompt_template
+
+def generate_report_title_prompt(
+        user_request_data: str,
+        hypotheses_data: str, 
+        executive_review_data: str
+    ) -> str:
+    
+    prompt_template = f"""    
+        <task>
+            You will be provided with:
+            * A user request in the user_request_data section
+            * A set of hypotheses in the hypotheses_data section
+            * An executive review in the executive_review_data section
+
+            Based on all the provided data, generate the report title using the format we will provide.
+            Return just the generated report title without any other acknowledgements, confirmations or observations.
+        </task>
+        <format>
+            Ensure the title is engaging.
+            Ensure the title is relevant to the whole data.
+            Ensure that the title is not long.
+            Do not use multiple sentences
+            Do not use lists.
+            Use text only format.
+        </format>
+        <user_request_data>
+            {user_request_data}
+        </user_request_data>
+        <hypotheses_data>
+            {hypotheses_data}
+        </hypotheses_data>
+        <executive_review_data>
+            {executive_review_data}
+        </executive_review_data>
+        """
+
+    return prompt_template

@@ -3,6 +3,7 @@ from tools.prompting import generate_evidence_structuring_prompt
 from tools.prompting import generate_evidence_in_depth_analysis_prompt
 from tools.prompting import generate_evidence_analysis_executive_review_prompt
 from tools.prompting import generate_actionable_information_prompt
+from tools.prompting import generate_report_title_prompt
 
 from tools.reporting import generate_report_content
 
@@ -12,6 +13,7 @@ from agents.analysis_evidence_structuring_agent_factory import AnalysisEvidenceS
 from agents.analysis_evidence_detailed_analysis_agent_factory import AnalysisEvidenceDetailedAnalysisAgentFactory
 from agents.analysis_executive_review_agent_factory import AnalysisExecutiveReviewAgentFactory
 from agents.analysis_actionable_information_agent_factory import AnalysisActionableInformationAgentFactory
+from agents.analysis_report_title_agent_factory import AnalysisReportTitleAgentFactory
 
 from agent_runners.simple_runner import SimpleRunner
 
@@ -59,8 +61,19 @@ def run_workflow_analysis_of_competing_hypotheses(user_request: str) -> str:
         )
     )
     
+    # generate the report title 
+    report_title = runner.run(
+        AnalysisReportTitleAgentFactory().get_agent(),
+        generate_report_title_prompt(
+            user_request, 
+            extracted_hypotheses,
+            executive_review
+        )
+    )
+    
     # assemble the report content
     report_content = generate_report_content (
+        report_title = report_title,
         user_request_data = user_request,
         hypotheses_data = extracted_hypotheses,
         executive_review_data = executive_review,
