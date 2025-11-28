@@ -16,7 +16,7 @@ class SimpleRunner:
     def run(self, agent: Agent, message: str) -> str:
 
         runner = InMemoryRunner(agent, app_name=self._application_name)
-
+        
         session = asyncio.run(runner.session_service.create_session(
             app_name=self._application_name, user_id=self._user_id
         ))
@@ -27,7 +27,7 @@ class SimpleRunner:
 
         response = None
         
-        for event in runner.run(user_id="user", session_id = session.id, new_message = message) :
+        for event in runner.run(user_id = self._user_id, session_id = session.id, new_message = message) :
             if event.is_final_response() :
                 if (event.content.parts) and (len(event.content.parts) > 0):
                     if event.content.parts[0].text : 
