@@ -1,16 +1,16 @@
 from tools.prompting import generate_evidence_extraction_prompt
 from tools.prompting import generate_evidence_structuring_prompt
+from tools.prompting import generate_competing_hypotheses_matrix_prompt
 from tools.prompting import generate_evidence_in_depth_analysis_prompt
 from tools.prompting import generate_evidence_analysis_executive_review_prompt
 from tools.prompting import generate_actionable_information_prompt
 from tools.prompting import generate_report_title_prompt
 
-from tools.reporting import generate_report_markdown_content
-
 from agents.analysis_hypotheses_extraction_agent_factory import AnalysisHypothesesExtractionAgentFactory
 from agents.analysis_web_information_agent_factory import AnalysisWebInformationAgentFactory
 from agents.analysis_evidence_structuring_agent_factory import AnalysisEvidenceStructuringAgentFactory
 from agents.analysis_evidence_detailed_analysis_agent_factory import AnalysisEvidenceDetailedAnalysisAgentFactory
+from agents.analysis_competing_hypotheses_matrix_agent_factory import AnalysisCompetingHypothesesMatrixAgentFactory
 from agents.analysis_executive_review_agent_factory import AnalysisExecutiveReviewAgentFactory
 from agents.analysis_actionable_information_agent_factory import AnalysisActionableInformationAgentFactory
 from agents.analysis_report_title_agent_factory import AnalysisReportTitleAgentFactory
@@ -53,6 +53,12 @@ def run_workflow_analysis_of_competing_hypotheses(user_request: str) -> str:
         generate_evidence_structuring_prompt(extracted_evidence)
     )
 
+    # generate the competitive hypotheses matrix
+    competing_hypotheses_matrix = runner.run(
+        AnalysisCompetingHypothesesMatrixAgentFactory().get_agent(),
+        generate_competing_hypotheses_matrix_prompt(extracted_hypotheses, structured_evidence)
+    )
+    
     # perform an in depth analysis of the structured evidence and its support for hypotheses 
     detailed_evidence_analysis = runner.run(
         AnalysisEvidenceDetailedAnalysisAgentFactory().get_agent(),
@@ -93,7 +99,8 @@ def run_workflow_analysis_of_competing_hypotheses(user_request: str) -> str:
         hypotheses_data = extracted_hypotheses,
         executive_review_data = executive_review,
         actionable_information_data = actionable_information,
-        evidence_analysis_data = detailed_evidence_analysis
+        evidence_analysis_data = detailed_evidence_analysis,
+        competing_hypotheses_matrix = competing_hypotheses_matrix
     )
     
     # assemble the execution debug data

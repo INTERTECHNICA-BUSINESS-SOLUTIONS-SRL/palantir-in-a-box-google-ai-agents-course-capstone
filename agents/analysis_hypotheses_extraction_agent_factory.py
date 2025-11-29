@@ -20,7 +20,7 @@ class AnalysisHypothesesExtractionAgentFactory(BaseGeminiLLMAgentFactory):
             <task>
                 You will extract the hypotheses from the analyst request section according to the following rules:
                 
-                * Extract the hypotheses in a clear and concise manner.
+                * Extract the hypotheses in a clear and concise manner. Brevity and clarity are absolutely necessary here   .
                 * Make sure that the hypotheses are well-formed and logically sound.
                 * Make sure that the hypotheses do not overlap with each other.
 

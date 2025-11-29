@@ -18,7 +18,8 @@ def generate_report_markdown_content (
     hypotheses_data: str, 
     executive_review_data: str,
     actionable_information_data: str,
-    evidence_analysis_data: str
+    evidence_analysis_data: str,
+    competing_hypotheses_matrix: str
 ) -> str:
     """
     Generates the final report content in Markdown format by populating a template from various data information items.
@@ -30,7 +31,8 @@ def generate_report_markdown_content (
         executive_review_data (str): The executive summary text.
         actionable_information_data (str): The actionable insights text.
         evidence_analysis_data (str): The evidence analysis text.
-
+        competing_hypotheses_matrix(str): The competing hypotheses matrix data.
+        
     Returns:
         str: The fully rendered Markdown report.
     """
@@ -49,7 +51,7 @@ def generate_report_markdown_content (
     # this is a structured JSON string,
     # load it as a JSON object for future processing
     hypotheses_json_data = json.loads(hypotheses_data)
-    hypotheses_list = "\t* " + "\n\t* ".join(hypotheses_json_data["hypotheses"])
+    hypotheses_list = "<br/>" + "<br/>".join(hypotheses_json_data["hypotheses"])
     hypotheses_reasoning = hypotheses_json_data["reasoning"]
     
     # render the generated report
@@ -64,7 +66,8 @@ def generate_report_markdown_content (
         hypotheses_reasoning = hypotheses_reasoning,
         executive_review_data = executive_review_data,
         actionable_information_data = actionable_information_data,
-        evidence_analysis_data = evidence_analysis_data
+        evidence_analysis_data = evidence_analysis_data,
+        competing_hypotheses_matrix = competing_hypotheses_matrix
     )
 
     return report_content
@@ -104,7 +107,8 @@ def generate_report_from_execution_result (
     hypotheses_data: str,
     executive_review_data: str,
     actionable_information_data: str,
-    evidence_analysis_data: str
+    evidence_analysis_data: str,
+    competing_hypotheses_matrix: str
 ) -> str:
     """
     Orchestrates the creation of a PDF report based on execution results.
@@ -119,7 +123,8 @@ def generate_report_from_execution_result (
         executive_review_data (str): The executive summary text.
         actionable_information_data (str): The actionable insights text.
         evidence_analysis_data (str): The detailed evidence analysis text.
-
+        competing_hypotheses_matrix(str): The competing hypotheses matrix data.
+        
     Returns:
         str: The file path of the generated PDF report.
     """    
@@ -129,7 +134,8 @@ def generate_report_from_execution_result (
         hypotheses_data,
         executive_review_data,
         actionable_information_data,
-        evidence_analysis_data
+        evidence_analysis_data,
+        competing_hypotheses_matrix
     )
     
     report_file_path = generate_pdf_report_from_markdown_content(

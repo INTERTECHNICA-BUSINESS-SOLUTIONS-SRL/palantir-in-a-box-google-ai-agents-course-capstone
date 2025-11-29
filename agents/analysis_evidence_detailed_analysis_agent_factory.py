@@ -14,7 +14,8 @@ class AnalysisEvidenceDetailedAnalysisAgentFactory(BaseGeminiLLMAgentFactory):
         </role>
         <task>
             You will be provided with a set of hypotheses.
-            You will be also provided with a set of evidence items containing a list of evidence items and their relations (supports, contradicts, irrelevant) to the hypotheses.
+            You will be also provided with a set of evidence items containing a list of evidence items and their relations 
+            (strongly supports, supports, irrelevant, contradicts, strongly contradicts) to the hypotheses.
             
             Analyze each evidence item and create a narrative in the format requested.
         </task>

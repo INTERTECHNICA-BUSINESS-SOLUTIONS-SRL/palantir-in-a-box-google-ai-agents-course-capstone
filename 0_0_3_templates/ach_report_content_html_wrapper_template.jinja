@@ -1,5 +1,6 @@
 <html>
     <head>
+        <meta charset="UTF-8">
         <style>
             @page left {
                 size: landscape;
@@ -59,8 +60,8 @@
             }
 
             th {
-                background-color: #003366;
-                border: 1 px solid #003366;
+                background-color: #334155;
+                border: 1 px solid #334155;
                 color: white;
                 padding: 5px;
                 -pdf-keep-with-next: true;
@@ -84,6 +85,13 @@
             img {
                 padding: 5px;
                 max-width: 100%;
+            }
+
+            li {
+                word-wrap: break-word;
+                list-style-position: outside;
+                margin-bottom: 5px;
+                line-height: 1.4; 
             }
 
             .alert {
@@ -111,14 +119,25 @@
                 font-weight: default;
             }
 
-            .user_request{
-                font-style: italic;
+            .user_request {
+                font-family: monospace;
                 font-weight: regular !important;
-                color: #334155;
-                margin-left: 2px;
+                color: #000000;
+                margin-left: 10px;
             }
 
-            .hypotheses_reasoning{
+            .hypotheses_list {
+                font-family: monospace;
+                font-weight: regular !important;
+                color: #000000;
+                padding-left: 10px;
+            }
+
+            .hypotheses_list p {
+                margin-bottom: 2px;
+            }
+
+            .hypotheses_reasoning {
                 font-style: italic;
                 color: #334155;
                 margin-left: 2px;

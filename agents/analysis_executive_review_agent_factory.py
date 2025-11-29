@@ -25,6 +25,8 @@ class AnalysisExecutiveReviewAgentFactory(BaseGeminiLLMAgentFactory):
             - Explain that this is the most likely hypothesis, while there is no method to prove this hypothesis is the ground truth;
             - Present in detail the evidence supporting this hypothesis and their implications in possible outcomes;
             - Finish with an explanation regarding the implications of this hypothesis.
+            
+            Use italic to highlight very important information in the text.
         </task>
         <format>
             Write each hypothesis name in bold format.
@@ -34,6 +36,7 @@ class AnalysisExecutiveReviewAgentFactory(BaseGeminiLLMAgentFactory):
             Do not use bullet points.
             Do not use lists.
             Use markdown format.
+            Use italic to highlight very important information in the text.
         </format>   
         """
 

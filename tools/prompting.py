@@ -80,6 +80,40 @@ def generate_evidence_structuring_prompt(evidence_data: str) -> str:
 
     return prompt_template
 
+def generate_competing_hypotheses_matrix_prompt(hypotheses_data: str, structured_evidence_data: str) -> str:
+    prompt_template = f"""    
+        <role>
+            You are an expert in structuring the evidence data.
+        </role>
+        <task> 
+            We will provide you with an analysis containing a list of evidence items and their relation to several hypotheses.
+            You will assemble the matrix in a markdown tabular format according to the instructions below:
+            
+            * The information for each cell in the evidence items in the EVIDENCE column will be: 
+                - Write the evidence index followed by evidence name. User bold format; 
+            * The rest of the columns will be the hypotheses as presented in hypotheses_data section.
+            * On each evidence = hypothesis cell will be the mention of the evidence-hypothesis relation: 
+            "&radic;&radic; Strongly supports", "&radic; Supports", "&oslash; Irrelevant", "&times; Contradicts", "&times;&times; Strongly contradicts" 
+            as specified in the structured_evidence_data section. Use bold format.
+        </task>
+        <format>
+            Return just the matrix without anything else such as confirmation or observations.
+            Do not add any other content beside the generated markdown.
+        </format>
+        <hypotheses_data>
+        
+            {hypotheses_data}
+        
+        </hypotheses_data>
+        <structured_evidence_data>
+        
+            {structured_evidence_data}
+        
+        </structured_evidence_data>
+        """
+
+    return prompt_template
+
 def generate_evidence_in_depth_analysis_prompt(hypotheses_data: str, evidence_data: str) -> str:
     """
     Generates a detailed prompt to guide an LLM in analyzing how evidence supports specific hypotheses.
@@ -170,9 +204,11 @@ def generate_actionable_information_prompt(
             
             - Action: the action suggested by the actionable information item. Make it specific, practical, achievable and time bound. 
             - Urgency: an explanation of the urgency for the Action. Use a compelling narrative to force the user into taking action.
-            - Analysis: explain what the Action is relevant in the context of user request, hypotheses, evidence analysis and executive review. Use markdown bold to highlight critical information. Make the analysis detailed.
+            - Analysis: explain what the Action is relevant in the context of user request, hypotheses, evidence analysis and executive review. Use markdown italic to highlight critical information. Make the analysis detailed.
             - Expected outcome: the outcome which is expected from executing the Action. Explain why the outcome is favorable to the user.
             - Associated evidence: list all associated evidence from the actionable information. Use a bullet point list for this.            
+            
+            Use markdown italic to highlight very important information in the text.
             
             Use the following titles for the structure of actionable information items: "Suggested Action", "Urgency", "Analyst's Comments" and "Expected Outcome".
 
@@ -186,6 +222,7 @@ def generate_actionable_information_prompt(
             
             Do not use bullet points unless asked explicitly.
             Do not use lists unless asked explicitly.
+            Use markdown italic to highlight very important information in the text.
             Use markdown format.
         </format>
         <user_request_data>
