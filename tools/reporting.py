@@ -5,7 +5,7 @@ from jinja2 import Environment, FileSystemLoader
 TEMPLATES_PATH = "./0_0_3_templates"
 ACH_REPORT_TEMPLATE = "ach_report_markdown_template.jinja"
 
-def generate_report_content (
+def generate_report_markdown_content (
             report_title: str,
             user_request_data: str,
             hypotheses_data: Dict[str, Any], 

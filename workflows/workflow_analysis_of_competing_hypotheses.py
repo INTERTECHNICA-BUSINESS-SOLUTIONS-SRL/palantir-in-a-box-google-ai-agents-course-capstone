@@ -5,7 +5,7 @@ from tools.prompting import generate_evidence_analysis_executive_review_prompt
 from tools.prompting import generate_actionable_information_prompt
 from tools.prompting import generate_report_title_prompt
 
-from tools.reporting import generate_report_content
+from tools.reporting import generate_report_markdown_content
 
 from agents.analysis_hypotheses_extraction_agent_factory import AnalysisHypothesesExtractionAgentFactory
 from agents.analysis_web_information_agent_factory import AnalysisWebInformationAgentFactory
@@ -72,7 +72,7 @@ def run_workflow_analysis_of_competing_hypotheses(user_request: str) -> str:
     )
     
     # assemble the report content
-    report_content = generate_report_content (
+    report_content = generate_report_markdown_content (
         report_title = report_title,
         user_request_data = user_request,
         hypotheses_data = extracted_hypotheses,
