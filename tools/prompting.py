@@ -150,8 +150,12 @@ def generate_actionable_information_prompt(
 
         </task>
         <format>
-            Create level 3 headings for each actionable information item. Use an appropriate title for the actionable information item. Add an index value to each actionable information item, start numbering from 1.
+            Create level 3 headings for each actionable information item. 
+            Use an appropriate title for the actionable information item, it should express the essence of the action suggested. 
+            Add an index value at the beginning of each actionable information item, start numbering from 1.
+            
             Use header level 4 for the structure titles.
+            
             Do not use bullet points unless asked explicitly.
             Do not use lists unless asked explicitly.
             Use markdown format.
