@@ -17,6 +17,21 @@ from agents.analysis_report_title_agent_factory import AnalysisReportTitleAgentF
 
 from agent_runners.simple_runner import SimpleRunner
 
+# a temporary hack to prevent frequent warnings about
+# improper closing of event loops
+# the error is usually benign, we've decided for a band aid for now. 
+from functools import wraps
+def silence_event_loop_closed(func):
+    @wraps(func)
+    def wrapper(*args, **kwargs):
+        try:
+            return func(*args, **kwargs)
+        except RuntimeError as e:
+            if str(e) != 'Event loop is closed':
+                raise
+    return wrapper
+
+@silence_event_loop_closed
 def run_workflow_analysis_of_competing_hypotheses(user_request: str) -> str:
     
     # first extract the hypotheses
@@ -71,14 +86,13 @@ def run_workflow_analysis_of_competing_hypotheses(user_request: str) -> str:
         )
     )
     
-    # assemble the report content
-    report_content = generate_report_markdown_content (
+    execution_result = dict(
         report_title = report_title,
         user_request_data = user_request,
         hypotheses_data = extracted_hypotheses,
         executive_review_data = executive_review,
         actionable_information_data = actionable_information,
-        evidence_analysis_data = detailed_evidence_analysis
+        evidence_analysis_data = detailed_evidence_analysis        
     )
     
-    return report_content
+    return execution_result
