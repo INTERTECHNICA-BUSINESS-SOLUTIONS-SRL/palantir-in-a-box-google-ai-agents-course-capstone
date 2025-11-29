@@ -15,7 +15,7 @@ REPORTS_PATH = "./0_0_4_reports"
 def generate_report_markdown_content (
     report_title: str,
     user_request_data: str,
-    hypotheses_data: Dict[str, Any], 
+    hypotheses_data: str, 
     executive_review_data: str,
     actionable_information_data: str,
     evidence_analysis_data: str
@@ -26,7 +26,7 @@ def generate_report_markdown_content (
     Args:
         report_title (str): The title of the report.
         user_request_data (str): The original user query or request.
-        hypotheses_data (Dict[str, Any]): The raw data containing hypotheses and reasoning.
+        hypotheses_data (str): A JSON string containing hypotheses and reasoning.
         executive_review_data (str): The executive summary text.
         actionable_information_data (str): The actionable insights text.
         evidence_analysis_data (str): The evidence analysis text.
@@ -69,6 +69,7 @@ def generate_report_markdown_content (
 
     return report_content
 
+
 def generate_pdf_report_from_markdown_content(
     markdown_content: str,
     report_title: str
@@ -95,3 +96,45 @@ def generate_pdf_report_from_markdown_content(
     )
     
     return report_file_name
+
+
+def generate_report_from_execution_result (
+    report_title: str,
+    user_request_data: str,
+    hypotheses_data: str,
+    executive_review_data: str,
+    actionable_information_data: str,
+    evidence_analysis_data: str
+) -> str:
+    """
+    Orchestrates the creation of a PDF report based on execution results.
+
+    This function generates the report content in Markdown format using the provided
+    data and subsequently converts it into a PDF file.
+
+    Args:
+        report_title (str): The title of the report.
+        user_request_data (str): The original user query or request.
+        hypotheses_data (str): A JSON formatted string containing hypotheses and reasoning.
+        executive_review_data (str): The executive summary text.
+        actionable_information_data (str): The actionable insights text.
+        evidence_analysis_data (str): The detailed evidence analysis text.
+
+    Returns:
+        str: The file path of the generated PDF report.
+    """    
+    markdown_content = generate_report_markdown_content(
+        report_title,
+        user_request_data,
+        hypotheses_data,
+        executive_review_data,
+        actionable_information_data,
+        evidence_analysis_data
+    )
+    
+    report_file_path = generate_pdf_report_from_markdown_content(
+        markdown_content,
+        report_title
+    )
+    
+    return report_file_path
