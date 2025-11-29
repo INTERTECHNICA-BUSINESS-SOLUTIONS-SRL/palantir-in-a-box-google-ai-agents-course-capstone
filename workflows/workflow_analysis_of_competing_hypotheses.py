@@ -86,13 +86,21 @@ def run_workflow_analysis_of_competing_hypotheses(user_request: str) -> str:
         )
     )
     
+    # assemble the execution results
     execution_result = dict(
         report_title = report_title,
         user_request_data = user_request,
         hypotheses_data = extracted_hypotheses,
         executive_review_data = executive_review,
         actionable_information_data = actionable_information,
-        evidence_analysis_data = detailed_evidence_analysis        
+        evidence_analysis_data = detailed_evidence_analysis
     )
     
-    return execution_result
+    # assemble the execution debug data
+    # for debugging, auditability and further evaluation
+    execution_debug_data = dict(
+        extracted_evidence = extracted_evidence,
+        structured_evidence = structured_evidence
+    )
+    
+    return execution_result, execution_debug_data
