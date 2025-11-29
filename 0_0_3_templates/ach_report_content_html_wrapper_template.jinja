@@ -1,0 +1,143 @@
+<html>
+    <head>
+        <style>
+            @page left {
+                size: landscape;
+            }
+
+            body {
+                font-family: "Lato";
+                font-size: 15px;
+                color: #202224;
+            }
+
+            li {
+                -pdf-keep-with-next: true;
+            }
+            
+            hr {
+                -pdf-keep-with-next: true;
+            }
+
+            h1 {
+                font-family: "Helvetica";
+                font-size: 40px;
+                font-weight: bold;
+                margin-bottom: 5px;
+                color: "#111827";
+            }
+            
+            h2 {
+                font-family: "Helvetica";
+                font-size: 30px;
+                font-weight: bold;
+                margin-bottom: 2px;
+                color: "#1F2937";
+                -pdf-keep-with-next: true;
+            }
+            
+            h3 {
+                font-family: "Helvetica";
+                font-size: 25px;
+                font-weight: bold;
+                margin-bottom: 2px;
+                color: "#374151";
+                -pdf-keep-with-next: true;
+            }
+
+            h4 {
+                font-family: "Helvetica";
+                font-size: 20px;
+                font-weight: bold;
+                color: "#4B5563";
+                -pdf-keep-with-next: true;
+            }
+
+            td {
+                border: 1px solid black;
+                padding: 5px;
+            }
+
+            th {
+                background-color: #003366;
+                border: 1 px solid #003366;
+                color: white;
+                padding: 5px;
+                -pdf-keep-with-next: true;
+            }
+
+            thead {
+                -pdf-keep-with-next: true;
+            }
+
+            tbody {
+                -pdf-keep-with-next: true;
+            }
+
+            blockquote {
+                font-family: "Open Sans";
+                font-weight: bold;
+                color: #5C5E60;
+                margin-left: 25px;
+            }
+
+            img {
+                padding: 5px;
+                max-width: 100%;
+            }
+
+            .alert {
+                background-color: red;
+                color: white;
+                padding:5px;
+                font-size: 12px;
+            }
+
+            .alert strong {
+                font-size: 15px;
+            }
+
+            #report_identification {
+                padding: 5px;
+                width: 100%;
+                color: white;
+                background-color: #003366;
+            }
+
+            #report_identification blockquote {
+                background-color: none;
+                border: none;
+                color: default;
+                font-weight: default;
+            }
+
+            .user_request{
+                font-style: italic;
+                font-weight: regular !important;
+                color: #334155;
+                margin-left: 2px;
+            }
+
+            .hypotheses_reasoning{
+                font-style: italic;
+                color: #334155;
+                margin-left: 2px;
+            }
+
+            .report_branding {
+                font-family: monospace;
+                padding-top: 10px;
+                padding-left: 10px;
+                width: 100%;
+                border-top: 1px solid black;
+                border-bottom: 1px solid black;
+                margin-top: 50px;
+                background-color: #111827;
+                color: #f9fAfB;
+            }
+        </style>
+    </head>
+    <body>
+        {{content}}
+    </body>
+</html>

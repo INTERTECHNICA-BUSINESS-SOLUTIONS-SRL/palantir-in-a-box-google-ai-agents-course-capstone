@@ -54,6 +54,15 @@ def generate_evidence_extraction_prompt(hypotheses_data: str) -> str:
     return prompt_template
 
 def generate_evidence_structuring_prompt(evidence_data: str) -> str:
+    """
+    Creates a prompt designed to instruct an LLM to structure raw evidence data.
+
+    Args:
+        evidence_data (str): The raw evidence text to be formatted.
+
+    Returns:
+        str: The complete prompt string containing role, task, and the injected evidence.
+    """
     prompt_template = f"""    
         <role>
             You are an expert in structuring the evidence data.
@@ -72,6 +81,16 @@ def generate_evidence_structuring_prompt(evidence_data: str) -> str:
     return prompt_template
 
 def generate_evidence_in_depth_analysis_prompt(hypotheses_data: str, evidence_data: str) -> str:
+    """
+    Generates a detailed prompt to guide an LLM in analyzing how evidence supports specific hypotheses.
+
+    Args:
+        hypotheses_data (str): The string containing the list of hypotheses.
+        evidence_data (str): The string containing the gathered evidence.
+
+    Returns:
+        str: The complete prompt string formatted for in-depth analysis.
+    """
     prompt_template = f"""    
         <role>
             You are a professional information analyst having an objective perspective and strong analytical language.
@@ -127,7 +146,16 @@ def generate_actionable_information_prompt(
         evidence_analysis_data: str,
         executive_review_data: str
     ) -> str:
-    
+    """
+    Generates a prompt for creating an executive review based on the detailed evidence analysis.
+
+    Args:
+        hypotheses_data (str): The set of competing hypotheses.
+        detailed_evidence_analysis_data (str): The in-depth analysis of how evidence relates to the hypotheses.
+
+    Returns:
+        str: The formatted prompt string for the executive review generation.
+    """
     prompt_template = f"""    
         <task>
             You will be provided with: 
@@ -181,7 +209,17 @@ def generate_report_title_prompt(
         hypotheses_data: str, 
         executive_review_data: str
     ) -> str:
-    
+    """
+    Generates a prompt designed to extract a concise and engaging report title from the analysis components.
+
+    Args:
+        user_request_data (str): The initial query or problem statement from the user.
+        hypotheses_data (str): The generated hypotheses.
+        executive_review_data (str): The final executive summary of the analysis.
+
+    Returns:
+        str: The formatted prompt string for title generation.
+    """
     prompt_template = f"""    
         <task>
             You will be provided with:
