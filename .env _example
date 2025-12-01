@@ -1,5 +1,6 @@
+# the GOOGLE API configuration
 GOOGLE_API_KEY= # provide your Google API key
-GENAI_REGION= # provide your Google API region, e.g. asia-southeast1
+GENAI_REGION=asia-southeast1 # provide your Google API region, e.g. asia-southeast1
 
 # the baseline LLM used by all the agents
 BASELINE_LLM=gemini-2.5-flash-lite
