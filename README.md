@@ -12,6 +12,8 @@ It transforms the abstract concept of "AI Agents" into a deployable, audit-ready
 
 The system follows a structured, 7-phase analytical process designed to mirror professional intelligence tradecraft. Each phase is executed by a dedicated Agent Factory, ensuring strict separation of concerns:
 
+<img width="2660" height="1560" alt="competing_hypothesis_analysis_workflow" src="https://github.com/user-attachments/assets/863dbb91-4a20-4b9b-aaa0-dd7b7249fc0f" />
+
 | Phase | Agent Implementation | Responsibility |
 | :--- | :--- | :--- |
 | **1. Hypothesis Formulation** | `Hypotheses Extraction Agent` | Parses analyst queries to structure mutually exclusive competing scenarios. |
@@ -27,6 +29,8 @@ The system follows a structured, 7-phase analytical process designed to mirror p
 ## 📑 Content Curation & Processing
 
 To ensure the integrity of the analysis, the system employs a dedicated **Content Processing Sub-Workflow**. This nested pipeline acts as a comprehensive data refinery, progressively transforming raw web data into structured analytical assets.
+
+<img width="2660" height="1300" alt="document_content_assembling_workflow" src="https://github.com/user-attachments/assets/40b73498-59fb-4e5a-ba13-bf9b2e42e8c4" />
 
 | Phase | Agent Implementation | Responsibility |
 | :--- | :--- | :--- |
