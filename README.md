@@ -8,6 +8,23 @@ using the **Analysis of Competing Hypotheses (ACH)**—a proven methodology for 
 Beyond simple automation, this project showcases **enterprise-grade patterns** for multi-agent orchestration, intelligent tool integration and automated report generation. 
 It transforms the abstract concept of "AI Agents" into a deployable, audit-ready architecture capable of rigorous strategic reasoning.
 
+## ⚡ Quickstart
+
+**Prerequisite:** Python **3.12.2** or higher is required.
+
+1.  **Configure Environment**
+    Create a `.env` file in the root directory using the structure provided in the `.env.example` file.
+    *   *Provide your `GOOGLE_API_KEY` to enable model access.*
+
+2.  **Initialize Virtual Environment**
+    Create and activate a Python virtual environment to manage dependencies in isolation.
+
+3.  **Run the Analysis**
+    Launch and execute the `intelligence_analyst.ipynb` notebook.
+    *   *This will automatically install all the necessary dependencies and execute the full analysis workflow.*
+
+> **ℹ️ Stability Note:** Due to the stochastic nature of Agentic AI and high computational load, the workflow may occasionally fail to retrieve evidence or complete execution. If this occurs, **restarting the notebook usually resolves the issue**. Basic retry mechanisms are implemented, and advanced guardrails may be planned for future releases.
+
 ## 🔎 Core Intelligence Analysis Workflow
 
 The system follows a structured, 7-phase analytical process designed to mirror professional intelligence tradecraft. Each phase is executed by a dedicated Agent Factory, ensuring strict separation of concerns:
