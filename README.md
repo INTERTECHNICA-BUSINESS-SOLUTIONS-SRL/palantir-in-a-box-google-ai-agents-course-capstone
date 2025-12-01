@@ -1,3 +1,6 @@
+# 🔮PALANTIR IN A BOX 
+**Using Agentic AI for Intelligence Analysis Operations**
+
 **Palantir in a Box** is a sophisticated, production-oriented intelligence analysis system driven by a coordinated network of specialized AI agents. 
 Built as a capstone project for the **Google AI Agents Course**, it demonstrates how structured Agentic AI can autonomously execute complex analytical workflows 
 using the **Analysis of Competing Hypotheses (ACH)**—a proven methodology for reducing analytical bias.
